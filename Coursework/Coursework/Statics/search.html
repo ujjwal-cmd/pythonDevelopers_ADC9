@@ -1,0 +1,23 @@
+{% block content %}
+  <div id="searchbody" class="wrapper">
+    <div class="search-fed">      
+      <form method="get" action=".">
+     <label for="search"> </label> <input type="text" class="sfield" name="q" max_length="100"  />
+     <input type="submit" class="searchput" value="Find" />        
+       </form>
+     </div>
+    <span class="step-links">
+       {% if query %}
+        <h3>Your Search Results</h3>
+  {% for result in found_entries %}
+
+     <p>
+         <p> <strong> <a href="{% url cripdetail result.object.id %}" >{{ result.title }}</a> </strong> </p>
+
+    </p>
+    {% empty %}
+         <p>No results found.</p>
+     {% endfor %}
+
+   {% endif %}
+ {% endblock %}
